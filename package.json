@@ -1,24 +1,23 @@
 {
   "name": "automation-fleet-manager",
   "version": "1.0.0",
-  "description": "Projeto de automação utilizando o cypress para um sistema de gestão de frotas",
+  "description": "Projeto de automação utilizando Cypress e Cucumber (BDD) para um sistema de gestão de frotas",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:run:chrome": "cypress run --browser chrome",
+    "cypress:run:headed": "cypress run --headed --browser chrome"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^15.0.0",
-    "cypress-cucumber-preprocessor": "^4.3.1"
-  },
-  "cypress-cucumber-preprocessor": {
-    "stepDefinitions": "cypress/support/steps/*/*.{js,ts}",
-    "filterSpecs": true,
-    "omitFiltered": true,
-    "nonGlobalStepDefinitions": true
+    "esbuild": "^0.21.5"
   },
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^23.0.0"
+    "@badeball/cypress-cucumber-preprocessor": "^23.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.2"
   }
 }

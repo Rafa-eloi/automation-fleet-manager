@@ -23,3 +23,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// ***********************************************
+// Aqui adicionamos comandos customizados do Cypress
+// ***********************************************
+
+import { loginElements } from '../elements/loginElements'
+
+// Comando de login
+Cypress.Commands.add("login", (email, senha) => {
+  cy.visit("/");
+  cy.get(loginElements.inputEmail).type(email);
+  cy.get(loginElements.inputPassword).type(senha);
+  cy.get(loginElements.buttonLogin).click();
+  cy.get(loginElements.titleHome).contains("Fleet Manager");
+})
