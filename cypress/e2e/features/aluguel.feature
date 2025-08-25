@@ -23,7 +23,6 @@ Feature: Alugar
 
     Scenario: Alugar veículo com cupom inválido
         And confirmar o aluguel
-        And escolher o método de pagamento "pix"
         And aplicar o cupom "INVALIDO123"
         Then deve visualizar a mensagem de erro de cupom inválido "Cupom inválido"
 
