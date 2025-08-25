@@ -34,7 +34,7 @@ jobs:
 
       # 5️⃣ Publicar relatório HTML como artifact
       - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
           path: cypress/reports
