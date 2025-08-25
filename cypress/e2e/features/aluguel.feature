@@ -16,7 +16,6 @@ Feature: Alugar
         | Pix     |
 
     #MELHORAR
-    @skip
     Scenario: Alugar veículo com cupom válido
         And confirmar o aluguel
         And aplicar o cupom "DESCONTO50"
