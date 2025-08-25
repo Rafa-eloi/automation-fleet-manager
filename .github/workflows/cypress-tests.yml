@@ -30,7 +30,7 @@ jobs:
 
       # 4️⃣ Rodar Cypress headless
       - name: Run Cypress Tests
-        run: npx cypress run
+        run: npx cypress run --headless --browser chrome
 
       # 5️⃣ Publicar relatório HTML como artifact
       - name: Upload Mochawesome Report
