@@ -32,10 +32,26 @@ class AluguelPage {
   }
 
   validarDesconto(valorDesconto) {
-    cy.get(aluguelElements.valorTotal).invoke("text").then((texto) => {
-      const valor = parseFloat(texto.replace("R$", "").replace(".", "").replace(",", ".").trim());
-      expect(valor).to.be.lessThan(valor + valorDesconto); // valida que aplicou desconto
-    });
+    // Captura Subtotal
+    cy.get(aluguelElements.subTotal)
+      .invoke("text")
+      .then((subtotalText) => {
+        const subtotal = parseFloat(
+          subtotalText.replace("R$", "").replace(".", "").replace(",", ".").trim()
+        );
+
+        // Captura Valor Final
+        cy.get(aluguelElements.valorTotal)
+          .invoke("text")
+          .then((valorFinalText) => {
+            const valorFinal = parseFloat(
+              valorFinalText.replace("R$", "").replace(".", "").replace(",", ".").trim()
+            );
+
+            // Valida se o valor final é igual ao subtotal - desconto
+            expect(valorFinal).to.eq(subtotal - valorDesconto);
+          });
+      });
   }
 
   validarMensagemErro(mensagem) {

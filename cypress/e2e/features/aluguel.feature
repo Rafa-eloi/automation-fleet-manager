@@ -15,8 +15,8 @@ Feature: Alugar
         | Cartão  |
         | Pix     |
 
-    #MELHORAR
     Scenario: Alugar veículo com cupom válido
+        When alterar a quantidade de dias para um valor aleatório entre 2 e 7
         And confirmar o aluguel
         And aplicar o cupom "DESCONTO50"
         Then o valor total deve ser reduzido em R$ 50,00
