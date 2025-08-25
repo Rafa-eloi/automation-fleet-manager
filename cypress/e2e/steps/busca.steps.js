@@ -13,3 +13,10 @@ When("informar o modelo {string}", (modelo) => {
     HomePage.preencherModelo(modelo);
 });
 
+When("pesquisar pelo veículo {string}", (termo) => {
+  HomePage.pesquisarVeiculo(termo);
+});
+
+Then("o grid de veículos deve estar vazio", () => {
+  HomePage.validarGridVazio();
+});

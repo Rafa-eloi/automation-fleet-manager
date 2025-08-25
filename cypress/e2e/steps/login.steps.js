@@ -1,13 +1,15 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
 import LoginPage from "../../pages/loginPage"
 
+const users = Cypress.env("users");
+
 Given("que o usuário esteja na tela de login", () => {
   LoginPage.visitarLogin();
 });
 
-When("informar o email {string} e a senha {string}", (email, senha) => {
-  LoginPage.preencherEmail(email);
-  LoginPage.preencherSenha(senha);
+When("informar credenciais inválidas", () => {
+  LoginPage.preencherEmail(users.invalid.email);
+  LoginPage.preencherSenha(users.invalid.password);
   LoginPage.clicarLogin();
 });
 
@@ -20,5 +22,13 @@ When("clicar no botão de sair", () => {
 });
 
 Then ("deve ir para a tela de login", () => {
-    LoginPage.validarTelaLogin();
+  LoginPage.validarTelaLogin();
+});
+
+When("clicar no botão de login sem preencher email e senha", () => {
+  LoginPage.clicarLogin();
+}); 
+
+Then ("deve aparecer uma mensagem {string}", (mensagem) => {
+  LoginPage.validarMensagemCampoVazio(mensagem);
 });

@@ -4,5 +4,22 @@ export const aluguelElements = {
   modalMetodoCartao: "#cartao",
   modalMetodoPix: "#pix",
   modalConfirmarPagamento: ".bg-primary",
-  toastSucesso: "body > section"
+  toastSucesso: "body > section",
+  inputCupom: ".flex.gap-2 > .flex",
+  btnAplicarCupom: ".flex.gap-2 > .inline-flex",
+  valorTotal: ".text-2xl.font-bold.text-green-600",
+  alertaErro: "body > section",
+  diaria: ".grid .font-bold.text-gray-800:contains('R$')",
+  inputDias: "#days",
+  valorTotal: ".p-4.bg-green-50 span.text-2xl.font-bold", 
+  detalheTotal: ".p-4.bg-green-50 p.text-xs",
+  modalVeiculo: ".grid .font-bold.text-gray-800",
+  inputDias: "#days",
+  valorTotal: ".p-4.bg-green-50 span.text-2xl.font-bold",
+  detalheTotal: ".p-4.bg-green-50 p.text-xs",
+  resumoVeiculoModal1: ".grid .font-bold.text-gray-800",
+  resumoValorTotalModal1: ".p-4.bg-green-50 span.text-2xl.font-bold",
+  resumoVeiculoModal2: ".p-4.bg-blue-50 span.font-medium.text-gray-800",
+  resumoDiariaModal2: ":nth-child(3) > .font-medium",
+  resumoValorTotalModal2: ".border-t > .text-blue-600"
 }
