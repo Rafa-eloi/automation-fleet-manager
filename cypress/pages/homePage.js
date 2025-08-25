@@ -16,48 +16,57 @@ class HomePage {
     }
 
     contarVeiculosAlugados() {
-        return cy.get(homeElements.statusAlugado).its("length")
+        return cy.get(homeElements.statusAlugado).its("length");
     }
 
     contarVeiculosGrid() {
-        return cy.get(homeElements.vehicleCards).its("length")
+        return cy.get(homeElements.vehicleCards).its("length");
     }
 
     obterValorDashboardTotalVeiculos() {
-        return cy.get(homeElements.cardTotalVeiculos).invoke("text").then(text => parseInt(text.trim()))
+        return cy.get(homeElements.cardTotalVeiculos).invoke("text").then(text => parseInt(text.trim()));
     }
 
     obterValorDashboardVeiculosAlugados() {
-        return cy.get(homeElements.cardVeiculosAlugados).invoke("text").then(text => parseInt(text.trim()))
+        return cy.get(homeElements.cardVeiculosAlugados).invoke("text").then(text => parseInt(text.trim()));
     }
 
     validarQtdVeiculosAlugados() {
         cy.wait(500); //melhorar para um intercept
         this.contarVeiculosAlugados().then(qtdGrid => {
-        this.obterValorDashboardVeiculosAlugados().then(qtdDashboard => {
-            expect(qtdGrid).to.eq(qtdDashboard)
-        })
-        })
+            this.obterValorDashboardVeiculosAlugados().then(qtdDashboard => {
+                expect(qtdGrid).to.eq(qtdDashboard);
+            });
+        });
     }
 
     validarQtdTotalVeiculos() {
         cy.wait(500); //melhorar para um intercept
         this.contarVeiculosGrid().then(qtdGrid => {
-        this.obterValorDashboardTotalVeiculos().then(qtdDashboard => {
-            expect(qtdGrid).to.eq(qtdDashboard)
-        })
-        })
+            this.obterValorDashboardTotalVeiculos().then(qtdDashboard => {
+                expect(qtdGrid).to.eq(qtdDashboard);
+            });
+        });
     }
 
     validarVeiculosNaoDisponiveisNaoPodemSerAlugados() {
         cy.get(homeElements.vehicleCards).each(($card) => {
-        const status = $card.find("span").text()
-        const botao = $card.find("button:contains('Alugar')")
+            const status = $card.find("span").text();
+            const botao = $card.find("button:contains('Alugar')");
 
-        if (status !== "Disponível") {
-            expect(botao).to.have.attr("disabled")
-        }
-        })
+            if (status !== "Disponível") {
+                expect(botao).to.have.attr("disabled");
+            }
+        });
+    }
+
+    pesquisarVeiculo(termo) {
+        cy.wait(1000);
+        cy.get(homeElements.inputBusca).type(termo);
+    }
+
+    validarGridVazio() {
+        cy.get(homeElements.gridVeiculos).should("have.length", 0);
     }
 }
 

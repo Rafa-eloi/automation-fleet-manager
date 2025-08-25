@@ -4,5 +4,5 @@ export const loginElements = {
   buttonLogin: '.inline-flex',
   alertError: 'body > section',
   titleHome: '.text-2xl',
-  buttonLogout: '.container > .inline-flex',
+  buttonLogout: '.container > .inline-flex'
 }

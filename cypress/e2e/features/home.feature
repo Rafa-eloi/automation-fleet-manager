@@ -1,8 +1,7 @@
 Feature: Home
 
     Background:
-        Given que o usuário esteja logado como "admin@teste.com" com senha "123456"
-
+        Given que o usuário esteja logado com credenciais válidas
 
     Scenario: Validar quantidade de veículos alugados
         When contar quantos veículos estão alugados na listagem

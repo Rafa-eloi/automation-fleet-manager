@@ -33,6 +33,12 @@ class LoginPage {
   validarTelaLogin() {
     cy.url().should("include", "/login");
   }
+
+  validarMensagemCampoVazio(mensagem) {
+    cy.get(loginElements.inputEmail).then(($input) => {
+      expect($input[0].validationMessage).to.eq(mensagem);
+    });
+  }
 }
 
 export default new LoginPage()
